@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Salma ❤️</title>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --pink: #ff4d6d; --soft: #fff0f3; --text: #590d22; }
+        body { background: var(--soft); font-family: 'Quicksand', sans-serif; color: var(--text); text-align: center; margin: 0; overflow-x: hidden; }
+        .section { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px; }
+        h1 { font-family: 'Dancing Script', cursive; font-size: 3.5rem; color: var(--pink); }
+        .btn { background: var(--pink); color: white; border: none; padding: 15px 40px; border-radius: 50px; font-size: 1.3rem; cursor: pointer; transition: 0.3s; box-shadow: 0 4px 15px rgba(255, 77, 109, 0.3); }
+        .btn:hover { transform: scale(1.1); }
+        #noBtn { background: #808080; position: absolute; font-size: 1rem; padding: 10px 20px; }
+        .hidden { display: none; }
+        .gift-box { background: white; border: 3px dashed var(--pink); padding: 20px; border-radius: 20px; margin-top: 20px; }
+    </style>
+</head>
+<body>
+
+    <div id="p1" class="section">
+        <h1>Hi Salma (Sally) ❤️</h1>
+        <p>You mean the world to me. I made this to prove it.</p>
+        <button class="btn" onclick="showPage('p2')">Open My Heart</button>
+    </div>
+
+    <div id="p2" class="section hidden">
+        <h1>Salma...</h1>
+        <h2>Will you be my Valentine?</h2>
+        <div style="margin-top: 30px; position: relative; height: 100px; width: 300px;">
+            <button class="btn" onclick="celebrate()">YES!</button>
+            <button id="noBtn" class="btn" onmouseover="moveBtn()">No</button>
+        </div>
+    </div>
+
+    <div id="p3" class="section hidden" style="height: auto; padding: 50px 20px;">
+        <h1>I Knew You'd Say Yes! 💖</h1>
+        <p>Here are your digital gifts, Sally:</p>
+        <div class="gift-box">
+            <h3>🎟️ The "Yes Day" Voucher</h3>
+            <p>I have to say YES to everything you want for one whole day.</p>
+        </div>
+        <div class="gift-box">
+            <h3>💆 The VIP Massage</h3>
+            <p>Redeemable for one 30-minute massage from yours truly.</p>
+        </div>
+        <div class="gift-box">
+            <h3>🍕 Your Favorite Dinner</h3>
+            <p>I'm buying. You're picking. No arguments!</p>
+        </div>
+        <p style="margin-top: 40px; font-style: italic;">"I love you more than words can say, Salma."</p>
+    </div>
+
+    <script>
+        function showPage(id) {
+            document.querySelectorAll('.section').forEach(s => s.classList.add('hidden'));
+            document.getElementById(id).classList.remove('hidden');
+        }
+
+        function moveBtn() {
+            const x = Math.random() * (window.innerWidth - 100);
+            const y = Math.random() * (window.innerHeight - 100);
+            const btn = document.getElementById('noBtn');
+            btn.style.left = x + 'px';
+            btn.style.top = y + 'px';
+        }
+
+        function celebrate() {
+            showPage('p3');
+            confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 } });
+            // Secondary burst
+            setTimeout(() => {
+                confetti({ particleCount: 100, spread: 100, origin: { y: 0.8 } });
+            }, 500);
+        }
+    </script>
+</body>
+</html>
